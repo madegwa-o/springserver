@@ -5,9 +5,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/v1/test")
 @RequiredArgsConstructor
 public class MainController {
 
@@ -16,22 +18,19 @@ public class MainController {
 
     private final Environment environment;
 
-    @GetMapping("/")
-    public String index() {
-        return "Spring World";
-    }
 
-    @GetMapping("/api/hello")
+
+    @GetMapping("/hello")
     public String hello() {
         return "Hello from Spring Server!";
     }
 
-    @GetMapping("/api/status")
+    @GetMapping("/status")
     public String status() {
         return "Server is running OK";
     }
 
-    @GetMapping("/api/secret-check")
+    @GetMapping("/secret-check")
     public String secretCheck() {
 
         String jwtSeretEnv =  environment.getProperty("jwt.secret");

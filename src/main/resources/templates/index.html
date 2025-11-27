@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SPRING APIS</title>
+</head>
+<body>
+<h1>PUBLIC APIS</h1>
+
+<ul>
+    <!-- Loop through the API list -->
+    <th:block th:each="api : ${apis}">
+        <li>
+            <a th:href="@{${api}}" th:text="${api}"></a>
+        </li>
+    </th:block>
+</ul>
+
+</body>
+</html>
