@@ -1,3 +1,7 @@
 spring:
   application:
     name: springserver
+
+
+jwt:
+  secret: ${JWT_SECRET}
