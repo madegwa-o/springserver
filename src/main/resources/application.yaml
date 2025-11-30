@@ -18,4 +18,18 @@ spring:
 
 
 jwt:
-  secret: ${JWT_SECRET}
+  secret:
+    key: ${JWT_SECRET}
+
+#jwt:
+#  secret:
+#    key: d08a389cf1770223c5cc297883e9a79aea9b02d8fb56f2beb0f10c726a1481edfc1b08d45b5717ab02c53ff82b0f14e00bde635156d91044b9241ec50a9fc849bd5ebbae096ad7df36e51e04fb9ef531c330080edaf857291cee67aaccd551e32921636ce47710b0f7d1143bdbf30a258a68efceded95387ba6820fb39fa611e5f38455275657bfd3171cc553b4ee163fd9d64acf4d688834005e8d58b05b6799860bcace6e8d8c18b1840f46fdc22a3c5841d23410eaaeba7c0359a0e47b028a340733508a37d282cb2ddc2dcac40517066e76e5b917aff9634bc6f1896332fab9cc64272be84b1e9f39874c705a6f9dd4efffef08a0a2b3020265090d5f271
+#
+
+  access-token:
+    expiration: 900000 # 15 minutes in milliseconds
+  refresh-token:
+    expiration: 604800000 # 7 days in milliseconds
+
+frontend:
+  url: http://localhost:5173

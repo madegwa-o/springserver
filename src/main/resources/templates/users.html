@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Users</title>
+</head>
+<body>
+
+<ul>
+  <th:block th:each="user : ${users}">
+    <li>
+      username: <span th:text="${user.annonumousName}">username</span>
+      email: <span th:text="${user.schoolEmail}">email</span>
+    </li>
+  </th:block>
+</ul>
+
+
+  <form action="/addUser" method="POST">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username">
+    <label for="email">Password</label>
+    <input type="email" name="email" id="email">
+
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
