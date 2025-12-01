@@ -11,11 +11,14 @@ public class CorsConfig implements WebMvcConfigurer {
     @Value("${frontend.url}")
     private String frontendUrl;
 
+    @Value("${backend.url}")
+    private String backendUrl;
+
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins(frontendUrl)
+                .allowedOrigins(frontendUrl, backendUrl)
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);  // Ensure you allow credentials if using cookies or authentication headers

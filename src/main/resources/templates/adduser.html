@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 450px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 25px 35px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .roles-container {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f0f5;
+            border-radius: 6px;
+        }
+
+        .roles-container label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            margin: 5px 0;
+        }
+
+        .roles-container input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 18px;
+            padding: 12px;
+            background: #0066cc;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #004d99;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Create User Account</h2>
+
+    <form action="/register" method="post">
+
+        <!-- Registration Number -->
+        <label for="regNo">Registration Number</label>
+        <input type="text" id="regNo" name="regNo" placeholder="e.g. BIT-001-2023" required>
+
+        <!-- Anonymous Name -->
+        <label for="annonumousName">Anonymous Name</label>
+        <input type="text" id="annonumousName" name="annonumousName" placeholder="e.g. DarkKnight" required>
+
+        <!-- Email -->
+        <label for="schoolEmail">School Email</label>
+        <input type="email" id="schoolEmail" name="schoolEmail" placeholder="example@karu.ac.ke" required>
+
+        <!-- Password -->
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- Roles -->
+        <label>Roles</label>
+        <div class="roles-container">
+
+            <label>
+                <input type="checkbox" name="roles" value="STUDENT"> STUDENT
+            </label>
+
+            <label>
+                <input type="checkbox" name="roles" value="ADMIN"> ADMIN
+            </label>
+
+            <label>
+                <input type="checkbox" name="roles" value="DEVELOPER"> DEVELOPER
+            </label>
+
+            <label>
+                <input type="checkbox" name="roles" value="LECTURER"> LECTURER
+            </label>
+
+        </div>
+
+        <button type="submit">Create Account</button>
+    </form>
+</div>
+
+</body>
+</html>

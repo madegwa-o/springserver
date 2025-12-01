@@ -32,4 +32,7 @@ jwt:
     expiration: 604800000 # 7 days in milliseconds
 
 frontend:
-  url: http://localhost:5173
+  url: ${FRONTEND_URL}
+
+backend:
+  url: ${BACKEND_URL}
