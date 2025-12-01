@@ -3,7 +3,10 @@ package com.example.springserver.authentication;
 
 import com.example.springserver.authentication.dto.LoginRequest;
 import com.example.springserver.authentication.dto.LoginResponse;
+import com.example.springserver.authentication.dto.UserDto;
 import com.example.springserver.authentication.jwt.JwtService;
+import com.example.springserver.user.User;
+import com.example.springserver.user.UserRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,6 +36,7 @@ public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final CustomUserDetailsService customUserDetailsService;
+    private final UserRepository userRepository;
 
 
     @PostMapping("/login")
@@ -59,8 +63,21 @@ public class AuthenticationController {
             response.addCookie(cookie);
 
 
+            User user = userRepository.getUsersBySchoolEmail(username);
+
+            assert user != null;
+            UserDto userDto =  UserDto.builder()
+                    .regNo(user.getRegNo())
+                    .userId(user.getUserId())
+                    .schoolEmail(user.getSchoolEmail())
+                    .roles(user.getRoles())
+                    .annonumousName(user.getAnnonumousName())
+                    .courses(user.getCourses())
+                    .build();
+
             loginResponse =  LoginResponse.builder()
                     .accessToken(accessToken)
+                    .user(userDto)
                     .message("success")
                     .build();
 

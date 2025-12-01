@@ -5,12 +5,13 @@ import com.example.springserver.dtos.UserRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class UserController {
 
     private final UserService userService;
@@ -28,6 +29,13 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+
+
+    @GetMapping("/by-roles")
+    public List<User> getUsersByRoles(@RequestParam Set<Role> roles) {
+        return userService.getUsersByRoles(roles);
+    }
+
 
     // GET USER BY ID
     @GetMapping("/{id}")

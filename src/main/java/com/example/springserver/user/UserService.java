@@ -1,11 +1,12 @@
 package com.example.springserver.user;
 
-import com.example.springserver.course.Course;
 import com.example.springserver.course.CourseRepository;
 import com.example.springserver.dtos.UserRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tools.jackson.databind.ObjectMapper;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final CourseRepository courseRepository;
+    private final ObjectMapper objectMapper;
 
     public User createUser(UserRequestDto dto) {
 
@@ -56,4 +58,17 @@ public class UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+    public List<User> getUsersByRoles(Collection<Role> roles) {
+        try {
+            // Convert roles to proper JSON array string
+            String jsonRoles = objectMapper.writeValueAsString(roles);
+            System.out.println("JSON Roles: " + jsonRoles);
+            return userRepository.findByRolesJsonOverlap(jsonRoles);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to convert roles to JSON", e);
+        }
+    }
+
+
 }

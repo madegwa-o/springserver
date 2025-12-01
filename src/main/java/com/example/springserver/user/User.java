@@ -36,6 +36,8 @@ public class User {
     @JsonManagedReference
     private List<Course> courses;
 
+    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
 }
