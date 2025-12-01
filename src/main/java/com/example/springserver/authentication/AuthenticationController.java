@@ -26,7 +26,7 @@ import java.util.Arrays;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/auth")
 public class AuthenticationController {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
